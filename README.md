@@ -2,7 +2,8 @@
 
 [KENT-WEB](https://www.kent-web.com/)で配布されている[Magick Counter](https://www.kent-web.com/count/mgcount.html)のフォークです。\
 改行コードを LF にしているのでパーミッションを変えるだけで使えると思います。\
-同時に Shift-JIS だと文字化して読みづらいので UTF8 にしています。
+同時に Shift-JIS だと文字化して読みづらいので UTF8 にしています。\
+またカウンタ画像は、かつて一部界隈で流行したねこみみカウンターに差し替えています。
 
 ## 変更点
 
