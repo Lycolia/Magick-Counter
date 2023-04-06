@@ -42,6 +42,13 @@ mgcount
 <img src="path/to/mgcount.cgi" alt="" />
 ```
 
+## 動かないとき
+
+以下の事柄を試すことで、動かない原因をある程度掴めます。
+
+-   ブラウザから `check.cgi` にアクセスしてエラーがないか
+-   SSH やターミナルから `check.cgi` を叩いてみてエラーがないか
+
 ## カウンタ画像参考
 
 ![0](mgcount/gif/0.gif)![1](mgcount/gif/1.gif)![2](mgcount/gif/2.gif)![3](mgcount/gif/3.gif)![4](mgcount/gif/4.gif)![5](mgcount/gif/5.gif)![6](mgcount/gif/6.gif)![7](mgcount/gif/7.gif)![8](mgcount/gif/8.gif)![9](mgcount/gif/9.gif)
