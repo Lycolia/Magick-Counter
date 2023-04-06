@@ -13,6 +13,35 @@
 | 改行コード   | CRLF                 | LF                 |
 | カウンタ画像 | 黒背景白文字デジタル | ねこみみカウンター |
 
+## 設置方法
+
+[詳細は公式ページにも書かれています。](https://www.kent-web.com/count/mgcount.html)
+
+### サーバーへの配置方法
+
+サーバーに配置してパーミッションを変更するだけです。
+下図の `[]` はパーミッションを表しています。
+必要に応じて `init.cgi` を編集することで設定を変更することができます。
+カウント数は `data/mgcount.dat` の一行目に 10 進数整数で記述することで設定できます。
+
+```
+mgcount
+  ├─data/
+  │  └─mgcount.dat [666 or 606 or 600]
+  ├─gif/
+  ├─check.cgi   [755 or 705 or 701 or 700]
+  ├─init.cgi    [644 or 604 or 601 or 600]
+  └─mgcount.cgi [755 or 705 or 701 or 700]
+```
+
+### HTML への埋め込み方法
+
+次のように `mgcount.cgi` を参照する形で `img` 要素を記述します。
+
+```html
+<img src="path/to/mgcount.cgi" alt="" />
+```
+
 ## カウンタ画像参考
 
 ![0](mgcount/gif/0.gif)![1](mgcount/gif/1.gif)![2](mgcount/gif/2.gif)![3](mgcount/gif/3.gif)![4](mgcount/gif/4.gif)![5](mgcount/gif/5.gif)![6](mgcount/gif/6.gif)![7](mgcount/gif/7.gif)![8](mgcount/gif/8.gif)![9](mgcount/gif/9.gif)
