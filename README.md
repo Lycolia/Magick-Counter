@@ -1,4 +1,4 @@
-# Magick-Counter
+# Magick-Nekomimi-Counter
 
 [KENT-WEB](https://www.kent-web.com/)で配布されている[Magick Counter](https://www.kent-web.com/count/mgcount.html)のフォークです。\
 改行コードを LF にしているのでパーミッションを変えるだけで使えると思います。\
