@@ -18,7 +18,7 @@ my %cf = &init;
 my $time = time;
 
 # 二重アクセスチェック
-my $flg;
+my $is_count_duplicate;
 if ($cf{limit_time} > 0) {
 
 	# クッキー取得
@@ -26,9 +26,26 @@ if ($cf{limit_time} > 0) {
 
 	# 二重アクセスチェック
 	if ($cook_time && $cook_time > $time) {
-		$flg++;
+		$is_count_duplicate = 1;
 	}
 }
+
+# BOT判定
+my $is_human;
+
+if (is_bot_ua($ENV{HTTP_USER_AGENT})) {
+	undef $is_human;
+} else {
+	$is_human = 1;
+}
+
+if (is_jp_host(get_remote_host())) {
+	$is_human = 1;
+} else {
+	undef $is_human;
+}
+
+my $can_count_up = !$is_count_duplicate && $is_human;
 
 # データ読込
 open(DAT,"+< $cf{datfile}");
@@ -36,7 +53,7 @@ eval "flock(DAT, 2);";
 my $data = <DAT>;
 
 # 重複なしの場合カウントアップ
-if (!$flg) {
+if ($can_count_up) {
 	seek(DAT, 0, 0);
 	print DAT ++$data;
 	truncate(DAT, tell(DAT));
@@ -44,7 +61,7 @@ if (!$flg) {
 close(DAT);
 
 # クッキー格納
-&set_cookie if (!$flg && $cf{limit_time} > 0);
+&set_cookie if ($can_count_up && $cf{limit_time} > 0);
 
 # 桁数調整
 while ( length($data) < $cf{digit} ) {
@@ -109,3 +126,23 @@ sub get_cookie {
 	return $cook_data;
 }
 
+sub is_bot_ua {
+	my $user_agent = shift;
+	return $user_agent =~ /(Mozilla\/5\.0 \(compatible;|bot)/;
+}
+
+sub get_remote_host {
+	if ("$ENV{REMOTE_HOST}" == "") {
+		my $ip_addr = $ENV{REMOTE_ADDR};
+		my $bin = pack('C4', split(/\./, $ip_addr));
+		my ($host_name) = gethostbyaddr($bin, 2);
+		return $host_name;
+	} else {
+		return $ENV{REMOTE_HOST};
+	}
+}
+
+sub is_jp_host {
+	my $remote_host = shift;
+	return $remote_host =~ /\.(jp|nifty\.com|2iij\.net|bbtec\.net)$/;
+}
