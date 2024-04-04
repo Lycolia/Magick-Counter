@@ -40,17 +40,14 @@ https://github.com/Lycolia/Magick-Nekomimi-Counter/commit/fceb3cb15c1ca9dfa38a2d
 1. このリポジトリの内容を取得し、`./mgcount`配下の内容をCGIが動作する場所に配置する
 2. 必要に応じて、`mgcount.cgi`の一行目にある`#!/usr/local/bin/perl`をPerlのパスにする
 3. 必要に応じて、`data/mgcount.dat`の一行目に初期カウント値を設定する
-4. 以下の構成図を基に、各ファイルに適切なパーミッションを設定する（左から順に試していくとよい）
+4. 以下の表を基に、各ファイルに適切なパーミッションを設定する（左から順に試していくとよい）
 
-```
-mgcount
-  ├─data/
-  │  └─mgcount.dat [666 or 606 or 600]
-  ├─gif/
-  ├─check.cgi   [755 or 705 or 701 or 700]
-  ├─init.cgi    [644 or 604 or 601 or 600]
-  └─mgcount.cgi [755 or 705 or 701 or 700]
-```
+| ファイル         | 一般サーバー | suExec環境、CGIWrap環境 |
+| ---------------- | ------------ | ----------------------- |
+| data/mpcount.dat | 666 or 606   | 600                     |
+| check.cgi        | 755 or 705   | 701 or 700              |
+| init.cgi         | 644 or 604   | 601 or 600              |
+| mgcount.cgi      | 755 or 705   | 701 or 700              |
 
 ### 設定方法
 
