@@ -65,7 +65,7 @@ init.cgiで行える設定について
 次のように`mgcount.cgi`を参照する形で`img`要素を記述します。
 
 ```html
-<img src="path/to/mgcount.cgi" alt="" />
+<img src="path/to/mgcount.cgi" alt="" >
 ```
 
 ## 動かないとき
