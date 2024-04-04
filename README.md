@@ -3,7 +3,7 @@
 [KENT-WEB](https://www.kent-web.com/)で配布されている[Magick Counter](https://www.kent-web.com/count/mgcount.html)のフォークです。\
 本家の文字コード問題やカウントされすぎ問題を解消するための機能追加を行い、組み込みのカウンタ画像をすり替えています。
 
-その他変更点は以下の変更点を参照ください。
+具体的な変更点は以下の変更点を参照ください。
 
 ## 変更点
 
