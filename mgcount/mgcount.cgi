@@ -133,6 +133,7 @@ sub is_bot_ua {
 
 sub get_remote_host {
 	if ("$ENV{REMOTE_HOST}" == "") {
+		# サーバーの設定によってはREMOTE_HOSTが取れないので、回避策としてlookup処理をしている
 		my $ip_addr = $ENV{REMOTE_ADDR};
 		my $bin = pack('C4', split(/\./, $ip_addr));
 		my ($host_name) = gethostbyaddr($bin, 2);
