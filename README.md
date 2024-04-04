@@ -82,5 +82,5 @@ init.cgiで行える設定について
 ## 著作権表示
 
 - CGIプログラムの著作権は[KENT-WEB](https://www.kent-web.com/)様に帰属します。
-  - 本リポジトリの内容をフォークなどし、再配布を行う場合、[KENT-WEB 様の再配布規定](https://www.kent-web.com/pubc/saihaifu.html)への準拠が必要です。
+  - 本リポジトリの内容をフォークなどし、再配布を行う場合、[KENT-WEB様の再配布規定](https://www.kent-web.com/pubc/saihaifu.html)への準拠が必要です。
 - カウンタ画像の著作権は[日下こかげ](https://www.pixiv.net/users/11807)様に帰属します。
