@@ -33,7 +33,7 @@ https://github.com/Lycolia/Magick-Nekomimi-Counter/commit/fceb3cb15c1ca9dfa38a2d
 
 ## 設置方法
 
-[詳細は公式ページにも書かれています。](https://www.kent-web.com/count/mgcount.html)
+[公式ページにも書かれています](https://www.kent-web.com/count/mgcount.html)
 
 ### サーバーへの配置方法
 
@@ -65,7 +65,7 @@ init.cgiで行える設定について
 次のように`mgcount.cgi`を参照する形で`img`要素を記述します。
 
 ```html
-<img src="path/to/mgcount.cgi" alt="" />
+<img src="path/to/mgcount.cgi" alt="">
 ```
 
 ## 動かないとき
