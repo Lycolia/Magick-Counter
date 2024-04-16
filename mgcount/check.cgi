@@ -56,12 +56,12 @@ if (defined $ENV{REMOTE_HOST}) {
 if (defined $ENV{REMOTE_ADDR}) {
 	print "環境変数「REMOTE_ADDR」の取得: OK<br>\n";
 } else {
-	print "環境変数「REMOTE_ADDR」の取得: NG。<br>\n";
+	print "環境変数「REMOTE_ADDR」の取得: NG<br>\n";
 }
 if (defined $ENV{HTTP_USER_AGENT}) {
 	print "環境変数「HTTP_USER_AGENT」の取得: OK<br>\n";
 } else {
-	print "環境変数「HTTP_USER_AGENT」の取得: NG。<br>\n";
+	print "環境変数「HTTP_USER_AGENT」の取得: NG<br>\n";
 }
 
 # 画像ファイルチェック
