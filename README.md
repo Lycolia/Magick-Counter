@@ -31,8 +31,6 @@
 
 ## 設置方法
 
-[公式ページにも書かれています](https://www.kent-web.com/count/mgcount.html)
-
 ### サーバーへの配置方法
 
 1. このリポジトリの内容を取得し、`./mgcount`配下の内容をCGIが動作する場所に配置する
