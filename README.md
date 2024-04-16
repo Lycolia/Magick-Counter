@@ -19,8 +19,6 @@
 
 クローラーを始めたBOTや、海外からのアクセスをカウントしない機能を追加しています。
 
-https://github.com/Lycolia/Magick-Nekomimi-Counter/commit/fceb3cb15c1ca9dfa38a2de0f2adb9c8ae6a4b6d
-
 ## ファイルの内容
 
 | ファイル           | 内容                     |
