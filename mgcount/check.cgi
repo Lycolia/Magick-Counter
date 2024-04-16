@@ -47,6 +47,23 @@ if (-f $cf{datfile}) {
 	print "データファイル位置: NG<br>\n";
 }
 
+# 環境変数チェック
+if (defined $ENV{REMOTE_HOST}) {
+	print "環境変数「REMOTE_HOST」の取得: OK<br>\n";
+} else {
+	print "環境変数「REMOTE_HOST」の取得: NG。内部処理でDNS lookupを行います。<br>\n";
+}
+if (defined $ENV{REMOTE_ADDR}) {
+	print "環境変数「REMOTE_ADDR」の取得: OK<br>\n";
+} else {
+	print "環境変数「REMOTE_ADDR」の取得: NG。<br>\n";
+}
+if (defined $ENV{HTTP_USER_AGENT}) {
+	print "環境変数「HTTP_USER_AGENT」の取得: OK<br>\n";
+} else {
+	print "環境変数「HTTP_USER_AGENT」の取得: NG。<br>\n";
+}
+
 # 画像ファイルチェック
 foreach (0 .. 9) {
 	if (-f "$cf{gifdir}/$_.gif") {

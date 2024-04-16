@@ -18,7 +18,7 @@ my %cf = &init;
 my $time = time;
 
 # 二重アクセスチェック
-my $is_count_duplicate;
+my $is_duplicate_count;
 if ($cf{limit_time} > 0) {
 
 	# クッキー取得
@@ -26,26 +26,12 @@ if ($cf{limit_time} > 0) {
 
 	# 二重アクセスチェック
 	if ($cook_time && $cook_time > $time) {
-		$is_count_duplicate = 1;
+		$is_duplicate_count = 1;
 	}
 }
 
-# BOT判定
-my $is_human;
-
-if (is_bot_ua($ENV{HTTP_USER_AGENT})) {
-	undef $is_human;
-} else {
-	$is_human = 1;
-}
-
-if (is_jp_host(get_remote_host())) {
-	$is_human = 1;
-} else {
-	undef $is_human;
-}
-
-my $can_count_up = !$is_count_duplicate && $is_human;
+# カウント判定
+my $can_count_up = can_count_up($is_duplicate_count, $cf{ignore_bot});
 
 # データ読込
 open(DAT,"+< $cf{datfile}");
@@ -126,20 +112,50 @@ sub get_cookie {
 	return $cook_data;
 }
 
+sub can_count_up {
+	my $is_duplicate_count = shift;
+	my $is_ignore_bot = shift;
+
+	if ($is_ignore_bot) {
+		# 重複カウント判定＋BOT判定
+		return !$is_duplicate_count && is_human();
+	} else {
+		# 重複カウント判定のみ
+		return !$is_duplicate_count;
+	}
+}
+
+sub is_human {
+	my $is_human;
+
+	if (is_bot_ua($ENV{HTTP_USER_AGENT})) {
+		undef $is_human;
+	} else {
+		$is_human = 1;
+	}
+
+	if (is_jp_host(get_remote_host())) {
+		$is_human = 1;
+	} else {
+		undef $is_human;
+	}
+
+	return $is_human;
+}
+
 sub is_bot_ua {
 	my $user_agent = shift;
 	return $user_agent =~ /(Mozilla\/5\.0 \(compatible;|bot)/;
 }
 
 sub get_remote_host {
-	if ("$ENV{REMOTE_HOST}" == "") {
-		# サーバーの設定によってはREMOTE_HOSTが取れないので、回避策としてlookup処理をしている
+	if (defined $ENV{REMOTE_HOST}) {
+		return $ENV{REMOTE_HOST};
+	} else {
 		my $ip_addr = $ENV{REMOTE_ADDR};
 		my $bin = pack('C4', split(/\./, $ip_addr));
 		my ($host_name) = gethostbyaddr($bin, 2);
 		return $host_name;
-	} else {
-		return $ENV{REMOTE_HOST};
 	}
 }
 
